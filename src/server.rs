@@ -32,13 +32,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let addr = "[::1]:50051".parse()?;
     let tezedge = MyTezedge {};    
 
-    println!("before Server::builder");
     Server::builder()
         .add_service(TezedgeServer::new(tezedge))
         .serve(addr)
         .await?;
-    
-    println!("after Server::builder");
 
     Ok(())
 }
